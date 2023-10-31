@@ -1,13 +1,13 @@
 import React from 'react'
 
-function AddTrackForm() {
+function AddTrackForm({handleChange, handleSubmit, newTrack}) {
   return (
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
-          <input value="" type="text" name="image" placeholder="Image URL"/>
-          <input value="" type="text" name="title" placeholder="title" />
-          <input value="" type="text" name="artist" placeholder="Artist" />
-          <input value="" type="number" name="BPM" placeholder="BPM" step="1.00" />
+          <input onChange={handleChange} value={newTrack.image} type="text" name="image" placeholder="Image URL"/>
+          <input onChange={handleChange} value={newTrack.title} type="text" name="title" placeholder="title" />
+          <input onChange={handleChange} value={newTrack.artist} type="text" name="artist" placeholder="Artist" />
+          <input onChange={handleChange} value={newTrack.BPM} type="number" name="BPM" placeholder="BPM" step="1.00" />
         </div>
         <input className="" type="submit" value="Add Track" />
       </form>

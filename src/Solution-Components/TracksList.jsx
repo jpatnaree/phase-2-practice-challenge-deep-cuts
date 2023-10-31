@@ -1,12 +1,6 @@
 import React from 'react'
-import Track from './Track'
 
-function TracksList({tracksData, handleDelete}) {
-
-  const tracksDisplay = tracksData.map((track) => {
-    return <Track key={track.id} track={track} handleDelete={handleDelete} />
-  })
-
+function TracksList() {
   return (
     <table>
       <tbody>
@@ -25,7 +19,7 @@ function TracksList({tracksData, handleDelete}) {
             <h3 className="">BPM</h3>
           </th>
         </tr>
-        {tracksDisplay}
+        {/* render a list of <Track> components here */}
       </tbody>
     </table>
   )
