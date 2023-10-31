@@ -7,7 +7,7 @@ function TracksPage() {
 
   const [tracks, setTracks] = useState([]);
   const [newTrack, setNewTrack] = useState({})
-
+  const [searchTrack, setSearchTrack] = useState('')
 
   useEffect(() => {
     fetch('http://localhost:8001/tracks')
@@ -29,12 +29,23 @@ function TracksPage() {
       console.log(deletedTrack)
     })
   }
+
+  function handleSearchTrack(e) {
+    const {value} = e.target
+    setSearchTrack(value)
+  }
+  console.log(searchTrack)
+
+  const filterTracks = tracks.filter(track => {
+    return track.title.toUpperCase().includes(searchTrack.toUpperCase()) || track.artist.toUpperCase().includes(searchTrack.toUpperCase())
+  })
+
     
   return (
     <div>
-      <Search />
+      <Search handleSearchTrack={handleSearchTrack}/>
       <AddTrackForm newTrack={newTrack} setNewTrack={setNewTrack} setTracks={setTracks} tracks={tracks} />
-      <TracksList tracks={tracks}  deleteTrack={deleteTrack}/>
+      <TracksList tracks={filterTracks}  deleteTrack={deleteTrack}/>
     </div>
   )
 }
